@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PdfReportGenerator {
+public class PdfReportGeneratorIText {
 
   public void generateReport(String outputFile, List<String> data) throws FileNotFoundException {
     PdfWriter writer = new PdfWriter(outputFile);
@@ -22,22 +22,16 @@ public class PdfReportGenerator {
     document.close();
   }
 
+  public static void main(String[] args) {
+    // пример для списка проектов
+    List<String> projectData = new ArrayList<>();
+    // Здесь добавьте код для получения списка проектов и добавления данных в projectData
 
-  // пример для списка проектов
-  List<String> projectData = new ArrayList<>();
-for (Project project : projects) {
-    projectData.add(project.toString());
-  }
-
-  PdfReportGenerator generator = new PdfReportGenerator();
-    try
-  {
+    PdfReportGeneratorIText generator = new PdfReportGeneratorIText();
     try {
       generator.generateReport("projects_report.pdf", projectData);
-    } catch (FileNotFoundException ex) {
-      throw new RuntimeException(ex);
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
     }
-  } catch (FileNotFoundException e) {
-    e.printStackTrace();
   }
 }
