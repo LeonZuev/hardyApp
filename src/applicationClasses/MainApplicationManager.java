@@ -6,11 +6,13 @@ public class MainApplicationManager {
 
     private ArrayList<Project> projectList;
     private ArrayList<Workday> workdayList;
-
     private ArrayList<Worker> workersList;
 
+    public MainApplicationManager() {
+        initData();
+    }
 
-    private void initData() {
+    public void initData() {
         projectList = new ArrayList<>();
         workdayList = new ArrayList<>();
         workersList = new ArrayList<>();
