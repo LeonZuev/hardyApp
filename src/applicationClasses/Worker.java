@@ -1,5 +1,7 @@
 package applicationClasses;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class Worker {
@@ -10,7 +12,8 @@ public class Worker {
   private List<Project> projects;
   private List<String> materials;
   private String notes;
-  private double workDaysCurrentMount;
+  private double workDaysCurrentMonth;
+  private double totalWorkDays;
 
   public String getWorkerName() {
     return workerName;
@@ -40,8 +43,12 @@ public class Worker {
     return notes;
   }
 
-  public double getWorkDaysCurrentMount() {
-    return workDaysCurrentMount;
+  public double getWorkDaysCurrentMonth() {
+    return workDaysCurrentMonth;
+  }
+
+  public double getTotalWorkDays() {
+    return totalWorkDays;
   }
 
   public void setWorkerName(String workerName) {
@@ -72,8 +79,70 @@ public class Worker {
     this.notes = notes;
   }
 
-  public void setWorkDaysCurrentMount(double workDaysCurrentMount) {
-    this.workDaysCurrentMount = workDaysCurrentMount;
+  public void setWorkDaysCurrentMonth(double workDaysCurrentMonth) {
+    this.workDaysCurrentMonth = workDaysCurrentMonth;
   }
 
+  public void setTotalWorkDays(double totalWorkDays) {
+    this.totalWorkDays = totalWorkDays;
+  }
+
+  public void addWorkday(Workday workday) {
+    this.workDays.add(workday);
+    Calendar calendar = Calendar.getInstance();
+    if (calendar.get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH)) {
+      this.workDaysCurrentMonth += 1;
+    }
+  }
+
+  public void removeWorkday(Workday workday) {
+    this.workDays.remove(workday);
+    Calendar calendar = Calendar.getInstance();
+    if (calendar.get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH)) {
+      this.workDaysCurrentMonth -= 1;
+    }
+  }
+
+  public void addProject(Project project) {
+    this.projects.add(project);
+  }
+
+  public void removeProject(Project project) {
+    this.projects.remove(project);
+  }
+
+  public void addMaterial(String material) {
+    this.materials.add(material);
+  }
+
+  public void removeMaterial(String material) {
+    this.materials.remove(material);
+  }
+
+  public void editNotes(String notes) {
+    this.notes = notes;
+  }
+
+  public List<Workday> getWorkdaysForMonth(int month) {
+    List<Workday> workdaysForMonth = new ArrayList<>();
+    Calendar calendar = Calendar.getInstance();
+    for (Workday workday : workDays) {
+      calendar.setTime(workday.getDate());
+      if (calendar.get(Calendar.MONTH) == month) {
+        workdaysForMonth.add(workday);
+      }
+    }
+    return workdaysForMonth;
+  }
+
+  public List<Workday> getWorkdaysForProject(Project project) {
+    List<Workday> workdaysForProject = new ArrayList<>();
+    for (Workday workday : workDays) {
+      if (workday.getProjectAddress().equals(project.getProjectAddress())) {
+        workdaysForProject.add(workday);
+      }
+    }
+    return workdaysForProject;
+  }
 }
+
