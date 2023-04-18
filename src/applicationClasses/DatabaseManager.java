@@ -12,7 +12,7 @@ public class DatabaseManager {
 
   public void addProject(Project project) {
     // TODO
-    System.out.println("Проект добавлен базе данных");
+    System.out.println("Проект добавлен базу данных");
   }
 
   public void updateProject(Project project) {
@@ -33,7 +33,7 @@ public class DatabaseManager {
 
   public void addWorkday(Workday workday) {
     // TODO
-    System.out.println("Рабочий день добавлен в базе данных");
+    System.out.println("Рабочий день добавлен в базу данных");
   }
 
   public void updateWorkday(Workday workday) {
@@ -43,12 +43,12 @@ public class DatabaseManager {
 
   public void deleteWorkday(Workday workday) {
     // TODO
-    System.out.println("Рабочий день в базе данных");
+    System.out.println("Рабочий день удалён из базы данных");
   }
 
   public ArrayList<Workday> getWorkdays(Project project) {
     // TODO
-    System.out.println("Список рабочих дней проекта " + project + " :");
+    System.out.println("Список рабочих дней проекта " + project + ":");
     return null;
   }
   public void addWorker(Worker worker) {
