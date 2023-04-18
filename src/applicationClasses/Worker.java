@@ -123,6 +123,12 @@ public class Worker {
     this.notes = notes;
   }
 
+  /**
+   *
+   *
+   * @param month the month to search for Workday objects
+   * @return a list of Workday objects occurred in the specified month
+   */
   public List<Workday> getWorkdaysForMonth(int month) {
     List<Workday> workdaysForMonth = new ArrayList<>();
     Calendar calendar = Calendar.getInstance();
@@ -135,6 +141,12 @@ public class Worker {
     return workdaysForMonth;
   }
 
+  /**
+   *
+   *
+   * @param project The Project object to search for associated Workday objects
+   * @return A list of Workday objects associated with the specified Project object
+   */
   public List<Workday> getWorkdaysForProject(Project project) {
     List<Workday> workdaysForProject = new ArrayList<>();
     for (Workday workday : workDays) {
