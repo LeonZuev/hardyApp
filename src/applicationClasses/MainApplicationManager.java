@@ -47,7 +47,7 @@ public class MainApplicationManager {
     }
 
     public ArrayList<Project> getProjectList() {
-        return projectList;
+        return new ArrayList<>(projectList);
     }
 
     public void setProjectList(ArrayList<Project> projectList) {
@@ -55,7 +55,7 @@ public class MainApplicationManager {
     }
 
     public ArrayList<Workday> getWorkdayList() {
-        return workdayList;
+        return new ArrayList<>(workdayList);
     }
 
     public void setWorkdayList(ArrayList<Workday> workdayList) {
@@ -63,7 +63,7 @@ public class MainApplicationManager {
     }
 
     public ArrayList<Worker> getWorkersList() {
-        return workersList;
+        return new ArrayList<>(workersList);
     }
 
     public void setWorkersList(ArrayList<Worker> workersList) {
