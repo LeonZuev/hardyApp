@@ -55,7 +55,17 @@ public class MainApplicationManager {
       writer.write("***");
       writer.newLine();
       for (Worker worker : workersList) {
-        writer.write(worker.toString());
+        writer.write(worker.getWorkerName() + ";" +
+                worker.getDayPayment() + ";" +
+                worker.getHourPayment() + ";" +
+                String.join(",", worker.getWorkDays().stream().map(UUID::toString).collect(Collectors.toList())) + "," +
+                String.join(",", worker.getProjects().stream().map(UUID::toString).collect(Collectors.toList())) + "," +
+                worker.getProjectIds().stream().map(UUID::toString).collect(Collectors.joining(",")) + "," +
+                String.join(",", worker.getMaterials()) + ";" +
+                worker.getNotes() + ";" +
+                worker.getWorkDaysCurrentMonth() + ";" +
+                worker.getTotalWorkDays()
+        );
         writer.newLine();
       }
     } catch (IOException e) {
