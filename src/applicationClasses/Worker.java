@@ -3,8 +3,10 @@ package applicationClasses;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.UUID;
 
 public class Worker {
+  private List<UUID> projectIds;
   private String workerName;
   private double dayPayment;
   private double hourPayment;
@@ -14,6 +16,15 @@ public class Worker {
   private String notes;
   private double workDaysCurrentMonth;
   private double totalWorkDays;
+
+
+  public Worker() {
+    projectIds = new ArrayList<>();
+  }
+
+  public ArrayList<UUID> getProjectIds() {
+    return (ArrayList<UUID>) projectIds;
+  }
 
   public String getWorkerName() {
     return workerName;
@@ -49,6 +60,9 @@ public class Worker {
 
   public double getTotalWorkDays() {
     return totalWorkDays;
+  }
+  public void setProjectIds(List<UUID> projectIds) {
+    this.projectIds = projectIds;
   }
 
   public void setWorkerName(String workerName) {
@@ -155,10 +169,11 @@ public class Worker {
 
   @Override
   public String toString() {
-    return String.format("%s;%.2f;%.2f;%s;%s;%s;%.2f;%.2f;",
+    return String.format("%s;%.2f;%.2f;%s;%s;%s;%s;%.2f;%.2f;",
             getWorkerName(),
             getDayPayment(),
             getHourPayment(),
+            getWorkDays(),
             getProjects().toString().replaceAll("[\\[\\]]", ""),
             getMaterials().toString().replaceAll("[\\[\\]]", ""),
     getNotes(),

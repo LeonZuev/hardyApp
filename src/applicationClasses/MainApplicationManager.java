@@ -8,10 +8,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class MainApplicationManager {
@@ -100,52 +98,59 @@ public class MainApplicationManager {
         }
 
         while ((line = reader.readLine()) != null && !line.equals("***")) {
-         String[] parts = line.split(";", -1);
-         Date date = new SimpleDateFormat("yyy-MM-dd").parse(parts[0]);
-         String companyName = parts[1];
-         String projectAddress = parts[2];
-         int hours = Integer.parseInt(parts[3]);
-         String progress = parts[4];
-         List<String> materials = Arrays.asList(parts[5].split(","));
-         String notes = parts[6];
-         double payment = Double.parseDouble(parts[7]);
+          String[] parts = line.split(";", -1);
+          Date date = new SimpleDateFormat("yyy-MM-dd").parse(parts[0]);
+          String companyName = parts[1];
+          String projectAddress = parts[2];
+          int hours = Integer.parseInt(parts[3]);
+          String progress = parts[4];
+          List<String> materials = Arrays.asList(parts[5].split(","));
+          String notes = parts[6];
+          double payment = Double.parseDouble(parts[7]);
 
-         Workday workday = new Workday();
-         workday.setDate(date);
-         workday.setCompanyName(companyName);
-         workday.setProjectAddress(projectAddress);
-         workday.setHours(hours);
-         workday.setProgress(progress);
-         workday.setMaterials(materials);
-         workday.setNotes(notes);
-         workday.setPayment(payment);
+          Workday workday = new Workday();
+          workday.setDate(date);
+          workday.setCompanyName(companyName);
+          workday.setProjectAddress(projectAddress);
+          workday.setHours(hours);
+          workday.setProgress(progress);
+          workday.setMaterials(materials);
+          workday.setNotes(notes);
+          workday.setPayment(payment);
 
-         workdayList.add(workday);
-
+          workdayList.add(workday);
         }
+
         while ((line = reader.readLine()) != null && !line.equals("***")) {
           String[] parts = line.split(";", -1);
           String workerName = parts[0];
           double dayPayment = Double.parseDouble(parts[1]);
           double hourPayment = Double.parseDouble(parts[2]);
-          List<Project> projects = new ArrayList<>(); // TODO связать с существующим проектом
-          List<String> material = Arrays.asList(parts[4].split(","));
-          String notes = parts[5];
-          double workDaysCurrentMonth = Double.parseDouble(parts[6]);
-          double totalWorkdays = Double.parseDouble(parts[7]);
+          String workDays = parts[3];
+          String projects = parts[4];
+          ArrayList<UUID> projectIds = Arrays.stream(parts[5].split(","))
+                                             .map(UUID::fromString)
+                                             .collect(Collectors.toCollection(ArrayList::new));
+          List<String> material = Arrays.asList(parts[6].split(","));
+          String notes = parts[7];
+          double workDaysCurrentMonth = Double.parseDouble(parts[8]);
+          double totalWorkdays = Double.parseDouble(parts[9]);
 
           Worker worker = new Worker();
           worker.setWorkerName(workerName);
-                  worker.setDayPayment(dayPayment);
-                  worker.setHourPayment(hourPayment);
-                  worker.setProjects(projects);
-                  worker.setMaterials(material);
-                  worker.setNotes(notes);
-                  worker.setWorkDaysCurrentMonth(workDaysCurrentMonth);
-                  worker.setTotalWorkDays(totalWorkdays);
+          worker.setDayPayment(dayPayment);
+          worker.setHourPayment(hourPayment);
+          worker.setWorkDays(workDays);
+          worker.setProjects(projects);
+          worker.setProjectIds(projectIds);
+          worker.setMaterials(material);
+          worker.setNotes(notes);
+          worker.setWorkDaysCurrentMonth(workDaysCurrentMonth);
+          worker.setTotalWorkDays(totalWorkdays);
 
-                  workersList.add(worker);
+          workersList.add(worker);
         }
+
       } catch (ParseException e) {
         throw new RuntimeException(e);
       }
@@ -154,7 +159,6 @@ public class MainApplicationManager {
       e.printStackTrace();
     }
   }
-
 
   public void addProject(Project project) {
     projectList.add(project);

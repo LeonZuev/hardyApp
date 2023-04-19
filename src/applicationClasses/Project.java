@@ -3,9 +3,11 @@ package applicationClasses;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public class Project {
 
+private UUID projectId;
   private Date date;
   private String companyName;
   private String companyManager;
@@ -17,6 +19,10 @@ public class Project {
 
   // TODO workdays counter
 
+
+  public UUID getProjectId() {
+    return projectId;
+  }
 
   public Date getDate() {
     return date;
@@ -50,6 +56,10 @@ public class Project {
 
   public String getWorkersNotes() {
     return workersNotes;
+  }
+
+  public void setProjectId(UUID projectId) {
+    this.projectId = projectId;
   }
 
   public void setDate(Date date) {
