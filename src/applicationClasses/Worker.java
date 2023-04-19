@@ -124,8 +124,6 @@ public class Worker {
   }
 
   /**
-   *
-   *
    * @param month the month to search for Workday objects
    * @return a list of Workday objects occurred in the specified month
    */
@@ -142,8 +140,6 @@ public class Worker {
   }
 
   /**
-   *
-   *
    * @param project The Project object to search for associated Workday objects
    * @return A list of Workday objects associated with the specified Project object
    */
@@ -156,5 +152,37 @@ public class Worker {
     }
     return workdaysForProject;
   }
+
+  @Override
+  public String toString() {
+    return String.format("%s;%.2f;%.2f;%s;%s;%s;%.2f;%.2f;",
+            getWorkerName(),
+            getDayPayment(),
+            getHourPayment(),
+            getProjects().toString().replaceAll("[\\[\\]]", ""),
+            getMaterials().toString().replaceAll("[\\[\\]]", ""),
+    getNotes(),
+    getWorkDaysCurrentMonth(),
+    getTotalWorkDays());
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -1,5 +1,6 @@
 package applicationClasses;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -72,4 +73,46 @@ public class Workday {
   public void setNotes(String notes) {
     this.notes = notes;
   }
+
+  public void setPayment(double payment) {
+    this.payment = payment;
+  }
+
+  @Override
+  public String toString() {
+    return String.format("%s;%s;%s;%d;%s;%s;%s;%.2f",
+    new SimpleDateFormat("yyy-MM-dd").format(getDate()),
+    getCompanyName(),
+    getProjectAddress(),
+    getHours(),
+    getProgress(),
+    getMaterials().toString().replaceAll("[\\[\\]]", ""),
+    getNotes(),
+    getPayment());
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
