@@ -20,10 +20,13 @@ public class Worker {
 
   public Worker() {
     projectIds = new ArrayList<>();
+    workDays = new ArrayList<>();
+    projects = new ArrayList<>();
+    materials = new ArrayList<>();
   }
 
-  public ArrayList<UUID> getProjectIds() {
-    return (ArrayList<UUID>) projectIds;
+  public List<UUID> getProjectIds() {
+    return projectIds;
   }
 
   public String getWorkerName() {
@@ -103,7 +106,9 @@ public class Worker {
 
   public void addWorkday(Workday workday) {
     this.workDays.add(workday);
+    this.totalWorkDays +=1;
     Calendar calendar = Calendar.getInstance();
+    calendar.setTime(workday.getDate());
     if (calendar.get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH)) {
       this.workDaysCurrentMonth += 1;
     }
@@ -111,7 +116,9 @@ public class Worker {
 
   public void removeWorkday(Workday workday) {
     this.workDays.remove(workday);
+    this.totalWorkDays -= 1;
     Calendar calendar = Calendar.getInstance();
+    calendar.setTime(workday.getDate());
     if (calendar.get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH)) {
       this.workDaysCurrentMonth -= 1;
     }
