@@ -1,9 +1,7 @@
 package applicationClasses;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.UUID;
+import java.time.ZoneId;
+import java.util.*;
 
 public class Worker {
   private List<UUID> projectIds;
@@ -108,7 +106,7 @@ public class Worker {
     this.workDays.add(workday);
     this.totalWorkDays +=1;
     Calendar calendar = Calendar.getInstance();
-    calendar.setTime(workday.getDate());
+    calendar.setTime(Date.from(workday.getDate().atStartOfDay(ZoneId.systemDefault()).toInstant()));
     if (calendar.get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH)) {
       this.workDaysCurrentMonth += 1;
     }
@@ -118,7 +116,7 @@ public class Worker {
     this.workDays.remove(workday);
     this.totalWorkDays -= 1;
     Calendar calendar = Calendar.getInstance();
-    calendar.setTime(workday.getDate());
+    calendar.setTime(Date.from(workday.getDate().atStartOfDay(ZoneId.systemDefault()).toInstant()));
     if (calendar.get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH)) {
       this.workDaysCurrentMonth -= 1;
     }

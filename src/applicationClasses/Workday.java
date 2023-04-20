@@ -1,11 +1,11 @@
 package applicationClasses;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Workday {
-  private Date date;
+  private LocalDate date;
   private String companyName;
   private String projectAddress;
   private int hours;
@@ -14,7 +14,7 @@ public class Workday {
   private String notes;
   private double payment;
 
-  public Date getDate() {
+  public LocalDate getDate() {
     return date;
   }
 
@@ -46,7 +46,7 @@ public class Workday {
     return payment;
   }
 
-  public void setDate(Date date) {
+  public void setDate(LocalDate date) {
     this.date = date;
   }
 

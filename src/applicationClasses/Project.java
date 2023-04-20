@@ -1,6 +1,7 @@
 package applicationClasses;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -62,7 +63,7 @@ private UUID projectId;
     this.projectId = projectId;
   }
 
-  public void setDate(Date date) {
+  public void setDate(LocalDate date) {
     this.date = date;
   }
 

@@ -6,9 +6,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 
@@ -85,7 +88,8 @@ public class MainApplicationManager {
         String line;
         while ((line = reader.readLine()) != null && !line.equals("***")) {
           String[] parts = line.split(";", -1);
-          Date date = new SimpleDateFormat("yyyy-MM-dd").parse(parts[0]);
+          DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+          LocalDate currentDate = LocalDate.parse(parts[0], formatter);
           String companyName = parts[1];
           String companyManager = parts[2];
           String projectAddress = parts[3];
@@ -95,7 +99,7 @@ public class MainApplicationManager {
           String workersNotes = parts[7];
 
           Project project = new Project();
-          project.setDate(date);
+          project.setDate(currentDate);
           project.setCompanyName(companyName);
           project.setCompanyManager(companyManager);
           project.setProjectAddress(projectAddress);
@@ -109,7 +113,8 @@ public class MainApplicationManager {
 
         while ((line = reader.readLine()) != null && !line.equals("***")) {
           String[] parts = line.split(";", -1);
-          Date date = new SimpleDateFormat("yyy-MM-dd").parse(parts[0]);
+          DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+          LocalDate currentDate = LocalDate.parse(parts[0], formatter);
           String companyName = parts[1];
           String projectAddress = parts[2];
           int hours = Integer.parseInt(parts[3]);
@@ -119,7 +124,7 @@ public class MainApplicationManager {
           double payment = Double.parseDouble(parts[7]);
 
           Workday workday = new Workday();
-          workday.setDate(date);
+          workday.setDate(currentDate);
           workday.setCompanyName(companyName);
           workday.setProjectAddress(projectAddress);
           workday.setHours(hours);
@@ -170,9 +175,6 @@ public class MainApplicationManager {
 
           workersList.add(worker);
         }
-
-      } catch (ParseException e) {
-        throw new RuntimeException(e);
       }
     } catch (
             IOException e) {
@@ -182,58 +184,52 @@ public class MainApplicationManager {
 
   private static Workday parseWorkday(String workdayData) {
     String[] parts = workdayData.split(",");
-    try {
-      Date date = new SimpleDateFormat("yyyy-MM-dd").parse(parts[0]);
-      String companyName = parts[1];
-      String projectAddress = parts[2];
-      int hours = Integer.parseInt(parts[3]);
-      String progress = parts[4];
-      List<String> materials = Arrays.asList(parts[5].split(";"));
-      String notes = parts[6];
-      double payment = Double.parseDouble(parts[7]);
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    LocalDate currentDate = LocalDate.parse(parts[0]);
+    String companyName = parts[1];
+    String projectAddress = parts[2];
+    int hours = Integer.parseInt(parts[3]);
+    String progress = parts[4];
+    List<String> materials = Arrays.asList(parts[5].split(";"));
+    String notes = parts[6];
+    double payment = Double.parseDouble(parts[7]);
 
-      Workday workday = new Workday();
-      workday.setDate(date);
-      workday.setCompanyName(companyName);
-      workday.setProjectAddress(projectAddress);
-      workday.setHours(hours);
-      workday.setProgress(progress);
-      workday.setMaterials(materials);
-      workday.setNotes(notes);
-      workday.setPayment(payment);
+    Workday workday = new Workday();
+    workday.setDate(currentDate);
+    workday.setCompanyName(companyName);
+    workday.setProjectAddress(projectAddress);
+    workday.setHours(hours);
+    workday.setProgress(progress);
+    workday.setMaterials(materials);
+    workday.setNotes(notes);
+    workday.setPayment(payment);
 
-      return workday;
-    } catch (ParseException e) {
-      throw new RuntimeException(e);
-    }
+    return workday;
   }
 
   private static Project parseProject(String projectData) {
     String[] parts = projectData.split(",", -1);
-    try {
-      Date date = new SimpleDateFormat("yyyy-MM-dd").parse(parts[0]);
-      String companyName = parts[1];
-      String companyManager = parts[2];
-      String projectAddress = parts[3];
-      List<String> workers = Arrays.asList(parts[4].split(";"));
-      String progress = parts[5];
-      List<String> materials = Arrays.asList(parts[6].split(";"));
-      String workersNotes = parts[7];
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    LocalDate currentDate = LocalDate.parse(parts[0]);
+    String companyName = parts[1];
+    String companyManager = parts[2];
+    String projectAddress = parts[3];
+    List<String> workers = Arrays.asList(parts[4].split(";"));
+    String progress = parts[5];
+    List<String> materials = Arrays.asList(parts[6].split(";"));
+    String workersNotes = parts[7];
 
-      Project project = new Project();
-      project.setDate(date);
-      project.setCompanyName(companyName);
-      project.setCompanyManager(companyManager);
-      project.setProjectAddress(projectAddress);
-      project.setWorkers(workers);
-      project.setProgress(progress);
-      project.setMaterials(materials);
-      project.setWorkersNotes(workersNotes);
+    Project project = new Project();
+    project.setDate(currentDate);
+    project.setCompanyName(companyName);
+    project.setCompanyManager(companyManager);
+    project.setProjectAddress(projectAddress);
+    project.setWorkers(workers);
+    project.setProgress(progress);
+    project.setMaterials(materials);
+    project.setWorkersNotes(workersNotes);
 
-      return project;
-    } catch (ParseException e) {
-      throw new RuntimeException(e);
-    }
+    return project;
   }
 
   public void addProject(Project project) {
