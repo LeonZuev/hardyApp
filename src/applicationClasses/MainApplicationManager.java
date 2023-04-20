@@ -7,7 +7,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -88,8 +87,7 @@ public class MainApplicationManager {
         String line;
         while ((line = reader.readLine()) != null && !line.equals("***")) {
           String[] parts = line.split(";", -1);
-          DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-          LocalDate currentDate = LocalDate.parse(parts[0], formatter);
+          LocalDate currentDate = LocalDate.parse(parts[0]);
           String companyName = parts[1];
           String companyManager = parts[2];
           String projectAddress = parts[3];
@@ -113,8 +111,7 @@ public class MainApplicationManager {
 
         while ((line = reader.readLine()) != null && !line.equals("***")) {
           String[] parts = line.split(";", -1);
-          DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-          LocalDate currentDate = LocalDate.parse(parts[0], formatter);
+          LocalDate currentDate = LocalDate.parse(parts[0]);
           String companyName = parts[1];
           String projectAddress = parts[2];
           int hours = Integer.parseInt(parts[3]);
@@ -183,8 +180,7 @@ public class MainApplicationManager {
   }
 
   private static Workday parseWorkday(String workdayData) {
-    String[] parts = workdayData.split(",");
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    String[] parts = workdayData.split(",", -1);
     LocalDate currentDate = LocalDate.parse(parts[0]);
     String companyName = parts[1];
     String projectAddress = parts[2];
@@ -209,7 +205,6 @@ public class MainApplicationManager {
 
   private static Project parseProject(String projectData) {
     String[] parts = projectData.split(",", -1);
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     LocalDate currentDate = LocalDate.parse(parts[0]);
     String companyName = parts[1];
     String companyManager = parts[2];

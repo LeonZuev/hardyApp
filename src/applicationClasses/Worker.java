@@ -1,5 +1,6 @@
 package applicationClasses;
 
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
 
@@ -150,7 +151,7 @@ public class Worker {
     List<Workday> workdaysForMonth = new ArrayList<>();
     Calendar calendar = Calendar.getInstance();
     for (Workday workday : workDays) {
-      calendar.setTime(workday.getDate());
+      LocalDate workdayDate = workday.getDate();
       if (calendar.get(Calendar.MONTH) == month) {
         workdaysForMonth.add(workday);
       }

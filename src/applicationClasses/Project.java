@@ -2,14 +2,13 @@ package applicationClasses;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 public class Project {
 
 private UUID projectId;
-  private Date date;
+  private LocalDate date;
   private String companyName;
   private String companyManager;
   private String projectAddress;
@@ -25,7 +24,7 @@ private UUID projectId;
     return projectId;
   }
 
-  public Date getDate() {
+  public LocalDate getDate() {
     return date;
   }
 
