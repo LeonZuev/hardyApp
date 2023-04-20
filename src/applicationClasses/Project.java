@@ -97,7 +97,7 @@ private UUID projectId;
   @Override
   public String toString() {
     return String.format("%s;%s;%s;%s;%s;%s;%s;%s",
-            new SimpleDateFormat("yyy-MM-dd").format(getDate()),
+            new SimpleDateFormat("yyyy-MM-dd").format(getDate()),
             getCompanyName(),
             getCompanyManager(),
             getProjectAddress(),

@@ -81,7 +81,7 @@ public class Workday {
   @Override
   public String toString() {
     return String.format("%s;%s;%s;%d;%s;%s;%s;%.2f",
-    new SimpleDateFormat("yyy-MM-dd").format(getDate()),
+    new SimpleDateFormat("yyyy-MM-dd").format(getDate()),
     getCompanyName(),
     getProjectAddress(),
     getHours(),
