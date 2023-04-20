@@ -58,9 +58,9 @@ public class MainApplicationManager {
         writer.write(worker.getWorkerName() + ";" +
                 worker.getDayPayment() + ";" +
                 worker.getHourPayment() + ";" +
-                String.join(",", worker.getWorkDays().stream().map(UUID::toString).collect(Collectors.toList())) + "," +
-                String.join(",", worker.getProjects().stream().map(UUID::toString).collect(Collectors.toList())) + "," +
-                worker.getProjectIds().stream().map(UUID::toString).collect(Collectors.joining(",")) + "," +
+                worker.getWorkDays().stream().map(Object::toString).collect(Collectors.joining(",")) + ";" +
+                worker.getProjects().stream().map(Object::toString).collect(Collectors.joining(",")) + ";" +
+                worker.getProjectIds().stream().map(UUID::toString).collect(Collectors.joining(",")) + ";" +
                 String.join(",", worker.getMaterials()) + ";" +
                 worker.getNotes() + ";" +
                 worker.getWorkDaysCurrentMonth() + ";" +
@@ -136,8 +136,18 @@ public class MainApplicationManager {
           String workerName = parts[0];
           double dayPayment = Double.parseDouble(parts[1]);
           double hourPayment = Double.parseDouble(parts[2]);
-          String workDays = parts[3];
-          String projects = parts[4];
+          String[] workDaysArray = parts[3].split(",");
+          List<Workday> workDaysList = new ArrayList<>();
+          for (String workdayData : workDaysArray) {
+            Workday workday = parseWorkday(workdayData);
+            workDaysList.add(workday);
+          }
+          String[] projectsArray = parts[4].split(",");
+          List<Project> projectsList = new ArrayList<>();
+          for (String projectData : projectsArray) {
+            Project project = parseProject(projectData);
+            projectsList.add(project);
+          }
           ArrayList<UUID> projectIds = Arrays.stream(parts[5].split(","))
                                              .map(UUID::fromString)
                                              .collect(Collectors.toCollection(ArrayList::new));
@@ -150,8 +160,8 @@ public class MainApplicationManager {
           worker.setWorkerName(workerName);
           worker.setDayPayment(dayPayment);
           worker.setHourPayment(hourPayment);
-          worker.setWorkDays(workDays);
-          worker.setProjects(projects);
+          worker.setWorkDays(workDaysList);
+          worker.setProjects(projectsList);
           worker.setProjectIds(projectIds);
           worker.setMaterials(material);
           worker.setNotes(notes);
@@ -168,6 +178,18 @@ public class MainApplicationManager {
             IOException e) {
       e.printStackTrace();
     }
+  }
+
+  private static Project parseProject(String projectData) {
+    String[] parts = projectData.split(",");
+    Project project = new Project();
+    return project;
+  }
+
+  private static Workday parseWorkday(String workdayData) {
+    String[] parts = workdayData.split(",");
+    Workday workday = new Workday();
+    return workday;
   }
 
   public void addProject(Project project) {
