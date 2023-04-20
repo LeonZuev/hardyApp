@@ -180,16 +180,60 @@ public class MainApplicationManager {
     }
   }
 
-  private static Project parseProject(String projectData) {
-    String[] parts = projectData.split(",");
-    Project project = new Project();
-    return project;
-  }
-
   private static Workday parseWorkday(String workdayData) {
     String[] parts = workdayData.split(",");
-    Workday workday = new Workday();
-    return workday;
+    try {
+      Date date = new SimpleDateFormat("yyyy-MM-dd").parse(parts[0]);
+      String companyName = parts[1];
+      String projectAddress = parts[2];
+      int hours = Integer.parseInt(parts[3]);
+      String progress = parts[4];
+      List<String> materials = Arrays.asList(parts[5].split(";"));
+      String notes = parts[6];
+      double payment = Double.parseDouble(parts[7]);
+
+      Workday workday = new Workday();
+      workday.setDate(date);
+      workday.setCompanyName(companyName);
+      workday.setProjectAddress(projectAddress);
+      workday.setHours(hours);
+      workday.setProgress(progress);
+      workday.setMaterials(materials);
+      workday.setNotes(notes);
+      workday.setPayment(payment);
+
+      return workday;
+    } catch (ParseException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  private static Project parseProject(String projectData) {
+    String[] parts = projectData.split(",", -1);
+    try {
+      Date date = new SimpleDateFormat("yyyy-MM-dd").parse(parts[0]);
+      String companyName = parts[1];
+      String companyManager = parts[2];
+      String projectAddress = parts[3];
+      List<String> workers = Arrays.asList(parts[4].split(";"));
+      String progress = parts[5];
+      List<String> materials = Arrays.asList(parts[6].split(";"));
+      String workersNotes = parts[7];
+
+      Project project = new Project();
+      project.setDate(date);
+      project.setCompanyName(companyName);
+      project.setCompanyManager(companyManager);
+      project.setProjectAddress(projectAddress);
+      project.setWorkers(workers);
+      project.setProgress(progress);
+      project.setMaterials(materials);
+      project.setWorkersNotes(workersNotes);
+
+      return project;
+    } catch (ParseException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   public void addProject(Project project) {
