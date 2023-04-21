@@ -218,12 +218,8 @@ public class ConsoleInterface {
           worker.getMaterials().addAll(Arrays.asList(materials.split(",")));
           System.out.println("Materials added to worker!");
         }
-        case 10 -> {
-          manager.printProjects();
-        }
-        case 11 -> {
-          manager.printWorkers();
-        }
+        case 10 -> manager.printProjects();
+        case 11 -> manager.printWorkers();
         case 0 -> {
           System.out.println("=== Exit program ===");
           System.exit(0);
