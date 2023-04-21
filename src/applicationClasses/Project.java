@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Project {
 
-private String projectName;
+private final String projectName;
   private LocalDate date;
   private String companyName;
   private String companyManager;
@@ -26,6 +26,10 @@ private String projectName;
     this.projectName = projectName;
     this.workers = new ArrayList<>();
     this.materials = new ArrayList<>();
+  }
+
+  public String getProjectName() {
+    return projectName;
   }
 
   public LocalDate getDate() {
@@ -106,15 +110,5 @@ private String projectName;
             getMaterials().toString().replaceAll("[\\[\\]]", ""),
             getWorkersNotes());
   }
-
-
-
-
-
-
-
-
-
-
 }
 
