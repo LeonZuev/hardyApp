@@ -1,7 +1,7 @@
 package applicationClasses;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class Project {
@@ -91,7 +91,7 @@ public class Project {
   @Override
   public String toString() {
     return String.format("%s;%s;%s;%s;%s;%s;%s;%s",
-            new SimpleDateFormat("yyyy-MM-dd").format(getDate()),
+            getDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
             getCompanyName(),
             getCompanyManager(),
             getProjectAddress(),
