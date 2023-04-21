@@ -175,6 +175,10 @@ public class Worker {
     return workdaysForProject;
   }
 
+  public double calculateSalary() {
+    return workDaysCurrentMonth * dayPayment;
+  }
+
   @Override
   public String toString() {
     return String.format("%s;%.2f;%.2f;%s;%s;%s;%s;%.2f;%.2f;",
