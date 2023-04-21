@@ -72,7 +72,7 @@ public class ConsoleInterface {
           System.out.println("Project added!");
         }
         case 2 -> {
-          System.out.println("Enter the index of thr project you want to delete:");
+          System.out.println("Enter the index of the project you want to delete:");
 
           int index = scanner.nextInt();
           scanner.nextLine();
@@ -123,7 +123,7 @@ public class ConsoleInterface {
           System.out.println("Workday added!");
         }
         case 4 -> {
-          System.out.println("Enter the index of thr workday tou want to delete:");
+          System.out.println("Enter the index of the workday tou want to delete:");
 
           int index = scanner.nextInt();
           scanner.nextLine();
@@ -155,12 +155,6 @@ public class ConsoleInterface {
           System.out.println("Total work days: ");
           double totalWorkDays = scanner.nextDouble();
           scanner.nextLine();
-          /*
-           private List<Workday> workDays;
-           private List<Project> projects;
-           private List<String> materials;
-
-           */
 
           Worker worker = new Worker();
           worker.setWorkerName(workerName);
