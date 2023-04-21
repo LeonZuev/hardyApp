@@ -36,4 +36,50 @@ public class MainApplicationManagerTests {
     manager.removeProject(project);
     assertEquals(initialSize, manager.getProjectList().size());
   }
+
+  @Test
+  void testAddAndRemoveWorkday() {
+    int initialSize = manager.getWorkdayList().size();
+
+    Workday workday = new Workday();
+    workday.setDate(LocalDate.now());
+    workday.setCompanyName("Company Name");
+    workday.setProjectAddress("Project 111 address");
+    workday.setHours(8);
+    workday.setProgress("In progress");
+    workday.setMaterials(List.of("Material 1", "Material 2"));
+    workday.setNotes("Daily notes");
+    workday.setPayment(100.0);
+
+    manager.addWorkday(workday);
+    assertEquals(initialSize + 1, manager.getWorkdayList().size());
+
+    manager.removeWorkday(workday);
+    assertEquals(initialSize, manager.getWorkdayList().size());
+  }
+
+  @Test
+  void testAddAndRemoveWorker() {
+    int initialSize = manager.getWorkersList().size();
+
+    Worker worker = new Worker();
+    worker.setWorkerName("Worker Name");
+    worker.setDayPayment(100.0);
+    worker.setHourPayment(12.5);
+    worker.setNotes("Notes");
+    worker.setWorkDaysCurrentMonth(10.5);
+    worker.setTotalWorkDays(50.0);
+
+    manager.addWorker(worker);
+    assertEquals(initialSize + 1, manager.getWorkersList().size());
+
+    manager.removeWorker(worker);
+    assertEquals(initialSize, manager.getWorkersList().size());
+  }
+
+
+
+
+
+
 }
