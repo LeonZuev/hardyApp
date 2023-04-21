@@ -2,26 +2,33 @@
 
 ## Construction Project Management Application
 
-### Trekker description: A simple console application for managing projects, workdays,
+### Trekker description:
+A simple console application for managing projects, workdays,
 and workers in the construction industry.
 
-### Get Start: To start the application, run the 'ConsoleInterfase' class,
+### Get Start:
+To start the application, run the 'ConsoleInterfase' class,
 wich contains the 'main' method.
 
 ## Class Overview:
-### 1.Project: Represents a construction project with its details such as
+### 1.Project:
+Represents a construction project with its details such as
 date, company name, company manager, project address, workers,
 progress, materials, and workers notes.
-### 2.Workday:  Represents a workday with details such as date, company
+### 2.Workday:
+Represents a workday with details such as date, company
 name, project address, hours, progress, materials, notes, and 
 payment.
-### 3.Worker: Represents a worker with details such as worker name, day 
+### 3.Worker:
+Represents a worker with details such as worker name, day 
 payment, hour payment, notes, workdays in the current month, total
 workdays, projects, and materials.
-### 4.MainApplicationManager:  Manages the main logic of the
+### 4.MainApplicationManager:
+Manages the main logic of the
 application, including initializing data, adding/removing projects,
 workdays, and workers.
-###ConsoleInterface: Provides the console user interface for interacting
+###ConsoleInterface:
+Provides the console user interface for interacting
 with the application.
 
 ## Detal Description:
