@@ -11,23 +11,23 @@ To start the application, run the 'ConsoleInterfase' class,
 wich contains the 'main' method.
 
 ## Class Overview:
-### 1.Project:
+### 1. Project:
 Represents a construction project with its details such as
 date, company name, company manager, project address, workers,
 progress, materials, and workers notes.
-### 2.Workday:
+### 2. Workday:
 Represents a workday with details such as date, company
 name, project address, hours, progress, materials, notes, and 
 payment.
-### 3.Worker:
+### 3. Worker:
 Represents a worker with details such as worker name, day 
 payment, hour payment, notes, workdays in the current month, total
 workdays, projects, and materials.
-### 4.MainApplicationManager:
+### 4. MainApplicationManager:
 Manages the main logic of the
 application, including initializing data, adding/removing projects,
 workdays, and workers.
-###ConsoleInterface:
+### 5. ConsoleInterface:
 Provides the console user interface for interacting
 with the application.
 
