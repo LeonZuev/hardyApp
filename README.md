@@ -2,27 +2,63 @@
 
 ## Construction Project Management Application
 
-## Description:
-  A Java- based application designed to streamline the process of tracking projects:
-workers, workdays, materials, paymants, project progress at all, as well as generating
-comprehensive reposts in PDF format.
+### Trekker description: A simple console application for managing projects, workdays,
+and workers in the construction industry.
 
-## Key Features:
-- User management with role-based sccess control (Director, Manager, Worker).
-- Project creation and management, including adress, workers, workdays, materials and progress.
-- Workday tracking with data on hours, daily progress, materials, notes and payment.
-- Worker profiles with contact information, professional level and payment detals.
-- PDF report generation with customizable contrnt from various lists (workers, projects, payments, etc).
+### Get Start: To start the application, run the 'ConsoleInterfase' class,
+wich contains the 'main' method.
 
-## Core Classes:
-Role: user roles with access levels.
-User: user with a role, workdays and contact information.
-Director: directors with project, material, and worker management capabilities.
-Worker: workers with project and workday tracking coapabilities.
-Project: projects with details on workers, workdays, materials and progress.
-Workday: Workdays with data on daily: hours, progress, materials, notes and payments.
+## Class Overview:
+### 1.Project: Represents a construction project with its details such as
+date, company name, company manager, project address, workers,
+progress, materials, and workers notes.
+### 2.Workday:  Represents a workday with details such as date, company
+name, project address, hours, progress, materials, notes, and 
+payment.
+### 3.Worker: Represents a worker with details such as worker name, day 
+payment, hour payment, notes, workdays in the current month, total
+workdays, projects, and materials.
+### 4.MainApplicationManager:  Manages the main logic of the
+application, including initializing data, adding/removing projects,
+workdays, and workers.
+###ConsoleInterface: Provides the console user interface for interacting
+with the application.
 
-## ***
-This Application serves as a foundation for efficient construction project management,
-with the potential for further expansion and customization based on specific need
-and requirements.
+## Detal Description:
+The Construction Trekker is designed to help users manage projects,
+workdays, and workers in the construction industry. Users can add,
+remove, and update projects, workdays, and workers, as well as assign 
+workdays and projects to workers. The application stores data in memory 
+and displays it to the user as needed. It features a simple console 
+interface for ease of use.
+The application consists of several classes that each serve a specific
+purpose. The Project class represents a construction project, while the 
+Workday class represents a workday. The Worker class is used to store
+information about a worker, including their name, payment rates, and
+assigned workdays and projects.
+The MainApplicationManager class is responsible for the main logic of
+the application. It initializes data structures to store projects, workdays,
+and workers, and provides methods to add, remove, and manipulate these 
+objects. The manager also provides methods to print lists of projects and
+workers for easy viewing.
+Lastly, the ConsoleInterface class provides the user interface for
+interacting with the application. It presents a menu of options for the user
+to choose from, such as adding or removing projects, workdays, or
+workers. The interface handles user input and calls the appropriate
+methods in the MainApplicationManager class to perform the desired
+actions.
+
+## JUnit Tests Overview:
+In addition to the main classes, the application includes a set of JUnit
+tests to ensure the functionality of the MainApplicationManager class.
+These tests cover a range of use cases, including adding and removing
+projects, workdays, and workers, as well as edge cases that may arise
+during the application's operation.
+
+## Author:
+Leon Zuev (@LeonZuev, loonatune@gmail.com)
+
+## Date:
+2023-04-21
+
+ 
