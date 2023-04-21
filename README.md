@@ -63,9 +63,7 @@ projects, workdays, and workers, as well as edge cases that may arise
 during the application's operation.
 
 ## Author:
-Leon Zuev (@LeonZuev, loonatune@gmail.com)
+Leon Zuev ([@LeonZuev]:(loonatune@gmail.com))
 
 ## Date:
-2023-04-21
-
- 
+![current date](https://img.shields.io/badge/date-2023.03.30-green)
