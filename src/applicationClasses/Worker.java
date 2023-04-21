@@ -152,7 +152,9 @@ public class Worker {
     Calendar calendar = Calendar.getInstance();
     for (Workday workday : workDays) {
       LocalDate workdayDate = workday.getDate();
-      if (calendar.get(Calendar.MONTH) == month) {
+      Calendar workdayCalendar = Calendar.getInstance();
+      workdayCalendar.setTime(Date.from(workdayDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+      if (workdayCalendar.get(Calendar.MONTH) == month) {
         workdaysForMonth.add(workday);
       }
     }
