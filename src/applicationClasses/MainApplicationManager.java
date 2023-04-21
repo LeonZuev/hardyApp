@@ -7,10 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -96,7 +93,10 @@ public class MainApplicationManager {
           List<String> materials = Arrays.asList(parts[6].split(","));
           String workersNotes = parts[7];
 
-          Project project = new Project();
+          Scanner scanner = new Scanner(System.in);
+          System.out.println("Enter the project name:");
+          String projectName = scanner.nextLine();
+          Project project = new Project(projectName);
           project.setDate(currentDate);
           project.setCompanyName(companyName);
           project.setCompanyManager(companyManager);
