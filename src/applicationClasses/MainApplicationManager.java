@@ -120,5 +120,4 @@ public class MainApplicationManager {
       System.out.printf("[%d] %s%n", i, workersList.get(i).toString());
     }
   }
-
 }
