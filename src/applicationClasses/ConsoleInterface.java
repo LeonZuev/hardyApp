@@ -21,7 +21,10 @@ public class ConsoleInterface {
       System.out.println("[4] delete Workday [4]");
       System.out.println("[5] add Worker [5]");
       System.out.println("[6] delete Worker [6]");
-      System.out.println("[7] EXIT [7]");
+      System.out.println("[7] Add workday to worker [7]");
+      System.out.println("[8] Add project to worker [8]");
+      System.out.println("[9] Add materials to worker [9]");
+      System.out.println("[0] EXIT [0]");
       System.out.println("Your input:");
 
       int choice = scanner.nextInt();
@@ -180,6 +183,46 @@ public class ConsoleInterface {
           System.out.println("Worker removed, so sad!");
         }
         case 7 -> {
+          System.out.println("Enter the index of the worker to add a workday:");
+          int workerIndex = scanner.nextInt();
+          scanner.nextLine();
+
+          System.out.println("Enter the index of workday to add:");
+          int workdayIndex = scanner.nextInt();
+          scanner.nextLine();
+
+          Worker worker = manager.getWorkersList().get(workerIndex);
+          Workday workday = manager.getWorkdayList().get(workdayIndex);
+          worker.getWorkDays().add(workday);
+          System.out.println("Workday added to worker!");
+        }
+        case 8 -> {
+          System.out.println("Enter the index of the worker to add materials:");
+          int workerIndex = scanner.nextInt();
+          scanner.nextLine();
+
+          System.out.println("Enter the index of the project to add:");
+          int projectIndex = scanner.nextInt();
+          scanner.nextLine();
+
+          Worker worker = manager.getWorkersList().get(workerIndex);
+          Project project = manager.getProjectList().get(projectIndex);
+          worker.getProjects().add(project);
+          System.out.println("Project added to worker!");
+        }
+        case 9 -> {
+          System.out.println("Enter the index of worker to add materials:");
+          int workerIndex = scanner.nextInt();
+          scanner.nextLine();
+
+          System.out.print("Materials (comma-separated): ");
+          String materials = scanner.nextLine();
+
+          Worker worker = manager.getWorkersList().get(workerIndex);
+          worker.getMaterials().addAll(Arrays.asList(materials.split(",")));
+          System.out.println("Materials added to worker!");
+        }
+        case 0 -> {
           System.out.println("=== Exit program ===");
           System.exit(0);
         }
