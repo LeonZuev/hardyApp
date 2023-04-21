@@ -249,24 +249,12 @@ public class MainApplicationManager {
     return new ArrayList<>(projectList);
   }
 
-  public void setProjectList(ArrayList<Project> projectList) {
-    this.projectList = projectList;
-  }
-
   public ArrayList<Workday> getWorkdayList() {
     return new ArrayList<>(workdayList);
   }
 
-  public void setWorkdayList(ArrayList<Workday> workdayList) {
-    this.workdayList = workdayList;
-  }
-
   public ArrayList<Worker> getWorkersList() {
     return new ArrayList<>(workersList);
-  }
-
-  public void setWorkersList(ArrayList<Worker> workersList) {
-    this.workersList = workersList;
   }
 
   public void printProjects() {
@@ -282,4 +270,5 @@ public class MainApplicationManager {
       System.out.printf("[%d] %s%n", i, workersList.get(i).toString());
     }
   }
+
 }
