@@ -2,12 +2,10 @@ package applicationClasses;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Project {
 
-private final String projectName;
   private LocalDate date;
   private String companyName;
   private String companyManager;
@@ -22,15 +20,7 @@ private final String projectName;
   // TODO workdays counter
 
 
-  public Project(String projectName) {
-    this.projectName = projectName;
-    this.workers = new ArrayList<>();
-    this.materials = new ArrayList<>();
-  }
 
-  public String getProjectName() {
-    return projectName;
-  }
 
   public LocalDate getDate() {
     return date;

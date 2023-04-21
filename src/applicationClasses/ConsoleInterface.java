@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class ConsoleInterface {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
+    MainApplicationManager manager = new MainApplicationManager();
 
     while (true) {
       System.out.println();
@@ -26,7 +27,7 @@ public class ConsoleInterface {
 
       switch (choice) {
         case 1 ->
-          // TODO
+        //TODO
                 System.out.println("add Project");
         case 2 ->
           // TODO

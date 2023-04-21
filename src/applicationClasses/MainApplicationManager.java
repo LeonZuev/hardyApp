@@ -93,10 +93,7 @@ public class MainApplicationManager {
           List<String> materials = Arrays.asList(parts[6].split(","));
           String workersNotes = parts[7];
 
-          Scanner scanner = new Scanner(System.in);
-          System.out.println("Enter the project name:");
-          String projectName = scanner.nextLine();
-          Project project = new Project(projectName);
+          Project project = new Project();
           project.setDate(currentDate);
           project.setCompanyName(companyName);
           project.setCompanyManager(companyManager);
@@ -150,9 +147,6 @@ public class MainApplicationManager {
             Project project = parseProject(projectData);
             projectsList.add(project);
           }
-          ArrayList<UUID> projectIds = Arrays.stream(parts[5].split(","))
-                                             .map(UUID::fromString)
-                                             .collect(Collectors.toCollection(ArrayList::new));
           List<String> material = Arrays.asList(parts[6].split(","));
           String notes = parts[7];
           double workDaysCurrentMonth = Double.parseDouble(parts[8]);
@@ -164,7 +158,6 @@ public class MainApplicationManager {
           worker.setHourPayment(hourPayment);
           worker.setWorkDays(workDaysList);
           worker.setProjects(projectsList);
-          worker.setProjectIds(projectIds);
           worker.setMaterials(material);
           worker.setNotes(notes);
           worker.setWorkDaysCurrentMonth(workDaysCurrentMonth);
@@ -213,6 +206,7 @@ public class MainApplicationManager {
     String progress = parts[5];
     List<String> materials = Arrays.asList(parts[6].split(";"));
     String workersNotes = parts[7];
+
 
     Project project = new Project();
     project.setDate(currentDate);
