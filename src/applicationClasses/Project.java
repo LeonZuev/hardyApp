@@ -2,12 +2,12 @@ package applicationClasses;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class Project {
 
-private UUID projectId;
+private String projectName;
   private LocalDate date;
   private String companyName;
   private String companyManager;
@@ -17,11 +17,15 @@ private UUID projectId;
   private List<String> materials;
   private String workersNotes;
 
+
+
   // TODO workdays counter
 
 
-  public UUID getProjectId() {
-    return projectId;
+  public Project(String projectName) {
+    this.projectName = projectName;
+    this.workers = new ArrayList<>();
+    this.materials = new ArrayList<>();
   }
 
   public LocalDate getDate() {
@@ -56,10 +60,6 @@ private UUID projectId;
 
   public String getWorkersNotes() {
     return workersNotes;
-  }
-
-  public void setProjectId(UUID projectId) {
-    this.projectId = projectId;
   }
 
   public void setDate(LocalDate date) {
