@@ -8,6 +8,7 @@ public class ConsoleInterface {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     MainApplicationManager manager = new MainApplicationManager();
+    manager.loadData();
 
     while (true) {
       System.out.println();
