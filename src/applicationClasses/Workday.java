@@ -1,7 +1,7 @@
 package applicationClasses;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class Workday {
@@ -81,7 +81,7 @@ public class Workday {
   @Override
   public String toString() {
     return String.format("%s;%s;%s;%d;%s;%s;%s;%.2f",
-    new SimpleDateFormat("yyyy-MM-dd").format(getDate()),
+            getDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
     getCompanyName(),
     getProjectAddress(),
     getHours(),
@@ -90,29 +90,4 @@ public class Workday {
     getNotes(),
     getPayment());
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
