@@ -24,6 +24,8 @@ public class ConsoleInterface {
       System.out.println("[7] Add workday to worker [7]");
       System.out.println("[8] Add project to worker [8]");
       System.out.println("[9] Add materials to worker [9]");
+      System.out.println("[10] Show projects [10]");
+      System.out.println("[11] Show workers [11]");
       System.out.println("[0] EXIT [0]");
       System.out.println("Your input:");
 
