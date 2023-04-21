@@ -11,16 +11,9 @@ public class Project {
   private String companyManager;
   private String projectAddress;
   private List<String> workers;
-  private String progress; // TODO String или List?
+  private String progress;
   private List<String> materials;
   private String workersNotes;
-
-
-
-  // TODO workdays counter
-
-
-
 
   public LocalDate getDate() {
     return date;
@@ -101,4 +94,3 @@ public class Project {
             getWorkersNotes());
   }
 }
-

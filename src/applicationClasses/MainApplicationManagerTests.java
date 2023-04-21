@@ -76,10 +76,4 @@ public class MainApplicationManagerTests {
     manager.removeWorker(worker);
     assertEquals(initialSize, manager.getWorkersList().size());
   }
-
-
-
-
-
-
 }

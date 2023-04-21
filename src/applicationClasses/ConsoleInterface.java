@@ -221,7 +221,7 @@ public class ConsoleInterface {
         case 10 -> {
           manager.printProjects();
         }
-        case  11 -> {
+        case 11 -> {
           manager.printWorkers();
         }
         case 0 -> {

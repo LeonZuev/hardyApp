@@ -82,12 +82,12 @@ public class Workday {
   public String toString() {
     return String.format("%s;%s;%s;%d;%s;%s;%s;%.2f",
             getDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
-    getCompanyName(),
-    getProjectAddress(),
-    getHours(),
-    getProgress(),
-    getMaterials().toString().replaceAll("[\\[\\]]", ""),
-    getNotes(),
-    getPayment());
+            getCompanyName(),
+            getProjectAddress(),
+            getHours(),
+            getProgress(),
+            getMaterials().toString().replaceAll("[\\[\\]]", ""),
+            getNotes(),
+            getPayment());
   }
 }
