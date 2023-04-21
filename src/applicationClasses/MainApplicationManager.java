@@ -268,4 +268,18 @@ public class MainApplicationManager {
   public void setWorkersList(ArrayList<Worker> workersList) {
     this.workersList = workersList;
   }
+
+  public void printProjects() {
+    System.out.println("=== Projects ===");
+    for (int i = 0; i < projectList.size(); ++i) {
+      System.out.printf("[%d] %s%n", i, projectList.get(i).toString());
+    }
+  }
+
+  public void printWorkers() {
+    System.out.println("=== Workers ===");
+    for (int i = 0; i < workersList.size(); ++i) {
+      System.out.printf("[%d] %s%n", i, workersList.get(i).toString());
+    }
+  }
 }
